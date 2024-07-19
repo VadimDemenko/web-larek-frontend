@@ -213,7 +213,7 @@ export type TOrderSuccess = Pick<IOrder, 'totalPrice'>;
 - events: Events - брокер событий
 
 #### Класс ModalWithProduct
-Расширяет класс Modal. Предназанчен для показа подробной информации о товаре и  добавлении его в корзину.
+Расширяет класс Modal. Предназанчен для показа подробной информации о товаре.
 Поля класса:
 - id - id карточки товара 
 - description - описание товара
@@ -222,9 +222,6 @@ export type TOrderSuccess = Pick<IOrder, 'totalPrice'>;
 - category категория товара
 - price - стоимость товара
 
-Методы:
-- addProductInBasket() - добовляет товар в корзину
-
 #### Класс ModalWithBasket
 Расширяет класс Modal. Предназанчен для показа товаров в корзине и общей стоимости.
 Поля класса:
@@ -232,7 +229,8 @@ export type TOrderSuccess = Pick<IOrder, 'totalPrice'>;
 - totalPrice - общая стоимость
 
 Методы:
-deleteProduct() - удаление товара из корзины
+- addProduct() - добовляет товар в корзину
+- deleteProduct() - удаление товара из корзины
 
 #### Класс ModalWithForm
 Расширяет класс Modal. Предназанчен для сбора пользовательской информации о способе оплаты и адресе доставки.
