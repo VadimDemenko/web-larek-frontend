@@ -1,66 +1,68 @@
+
 // Карточка товара
 export interface IProduct {
-  id: string;
+	id: string;
   description: string;
-  image: string;
-  title: string;
-  category: string;
-  price: number;
+	title: string;
+	image: string;
+	category: string;
+	price: number;
+  index: number;
 }
 
 // Корзина
 export interface IBasket {
-  counterProduct: number;
-  listProduct: TCounterProduct[];
-  totalPrice: number;
-}
-
-// Интерфейс корзтины
-export interface IBasketData {
-  addProduct(value: IProduct): void;
-  deleteProduct(productId: string): void;
-  getTotalPrice(): number;
+	products: HTMLElement[];
+	totalPrice: number | null;
+	buttonState: number;
 }
 
 // Оформление заказа
 export interface IOrder {
-  payment: TPaymentMethod;
-  adress: string;
-  email: string;
-  phone: string;
-  totalPrice: number;
+	payment: string;
+  address: string;
+	email: string;
+	phone: string;
+	total: number;
+  items: string[];
 }
 
-// Интерфейс оформления заказа
-export interface IOrderData {
-  checkValidation(data: Record<keyof IOrder, string>): boolean;
+// Успешный заказ
+export interface IOrderResult {
+	id: string;
 }
 
-// Инфорфейс списка карточек на главной странице
-export interface IProductData {
-  products: IProduct[];
+// Вид страницы
+export interface IPage {
+	counter: number;
+	catalog: HTMLElement[];
+	locked: boolean;
+}
+
+// Cтраницы магазина
+export interface IAppState {
+	catalog: IProduct[];
+	basket: string[];
   preview: string | null;
-  getProduct(productId: string): IProduct;
-  getCounterProduct(): TCounterProduct;
+	order: IOrder | null;
+	basketCounter: number;
 }
 
-// Выбор способа оплаты
-export type TPaymentMethod = 'card' | 'cash';
+// Api
+export interface IApi {
+	getProducts: () => Promise<IProduct[]>;
+	orderProducts(order: IOrder): Promise<IOrderResult>;
+}
 
-// Счетчик товаров в корзине в шапке
-export type TCounterProduct = Pick<IBasket, 'counterProduct'>;
+// Сосотояние формы
+export interface IForm {
+	valid: boolean;
+	errors: string[];
+}
 
-// Список товаров в корзине
-export type TProdctInBasket = Pick<IProduct, 'id' | 'title' | 'price'>;
+// Оформление заказа
+export type TOrder = Pick<IOrder, 'payment' | 'address' | 'email' | 'phone'>;
 
-// Корзина
-export type TBasket = Pick<IBasket, 'listProduct' | 'totalPrice'>;
+// Ошибки в форме
+export type FormErrors = Partial<Record<keyof IOrder, string>>;
 
-// Оформление - Форма с выбором отплаты и доставка
-export type TOrderForm = Pick<IOrder, 'payment' | 'adress'>;
-
-// Оформление - формат контактов
-export type TOrderContact = Pick<IOrder, 'email' | 'phone'>;
-
-// Оформление - страница успеха
-export type TOrderSuccess = Pick<IOrder, 'totalPrice'>;
