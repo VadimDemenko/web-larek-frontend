@@ -49,12 +49,12 @@ yarn build
 ```
 interface IProduct {
 	id: string;
-  description: string;
+	description: string;
 	title: string;
 	image: string;
 	category: string;
 	price: number;
-  index: number;
+	index: number;
 }
 ```
 
@@ -64,7 +64,7 @@ interface IProduct {
 interface IBasket {
 	products: HTMLElement[];
 	totalPrice: number | null;
-  counter: number;
+	counter: number;
 }  
 ```
 
@@ -73,11 +73,11 @@ interface IBasket {
 ```
 interface IOrder {
 	payment: string;
-  address: string;
+	address: string;
 	email: string;
 	phone: string;
 	total: number;
-  items: string[];
+	items: string[];
 }
 ```
 
@@ -105,7 +105,7 @@ Cтраницы магазина
 interface IAppState {
 	catalog: IProduct[];
 	basket: string[];
-  preview: string | null;
+	preview: string | null;
 	order: IOrder | null;
 	basketCounter: number;
 }
