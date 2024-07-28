@@ -117,13 +117,8 @@ events.on('product:delete', (product: IProduct) => {
 // Событие открытия корзины 
 events.on('basket:open', () => {
 	modal.render({
-			content: basket.render({
-					products: [],
-					totalPrice: 0,
-					buttonState: 0,
-			}),
+			content: basket.render(),
 	});
-	events.emit('basket:change');
 });
 
 // Событие изменение корзины
@@ -135,7 +130,6 @@ events.on('basket:change', () => {
 					{
 							onClick: () => {
 									events.emit('product:delete', product);
-									events.emit('basket:open');
 							},
 					}
 			);
@@ -148,6 +142,7 @@ events.on('basket:change', () => {
 			});
 	});
 
+	// А как тут без рендеринга?
 	basket.render({
 			products,
 			totalPrice: appState.setTotal(),

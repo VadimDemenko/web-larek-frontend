@@ -66,7 +66,7 @@ export class AppState extends Model<IAppState> {
 
   // Метод для очистки корзины
 	clearBasket() {
-		this._basket.splice(0, this._basket.length)
+		this._basket = [];
 	}
 
 	// Метод для добавления товара в корзину 
