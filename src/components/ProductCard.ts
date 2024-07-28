@@ -69,14 +69,13 @@ export class ProductCard extends Component<IProduct> {
 	}
 
 	set price(value: string) {
-		if (value) {
-			this.setText(this._price, `${value} синапсов`);
-			this.setDisabled(this._button, false);
-		} else {
-			this.setText(this._price, `Бесценно`);
-			this.setDisabled(this._button, true);
-		}
-	}
+    if (value) {
+        this.setText(this._price, `${value} синапсов`);
+    } else {
+        this.setText(this._price, `Бесценно`);
+    }
+    this.setDisabled(this._button, false);
+}
 
 	get button() {
 		return this._button;

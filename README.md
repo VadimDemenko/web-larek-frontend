@@ -251,6 +251,7 @@ type FormErrors = Partial<Record<keyof IOrder, string>>;
 - `modal:close` - закрытие модального окна
 - `product:add` - добавление товара
 - `product:delete` - удаление товара
+- `basket:change` - изменение корзины
 - `basket:open` - открытие корзины
 - `payment:selected` - выбор способа оплаты
 - `order-form:open` - открытие формы с заказом

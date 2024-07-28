@@ -69,18 +69,18 @@ export class AppState extends Model<IAppState> {
 		this._basket.splice(0, this._basket.length)
 	}
 
-  // Метод для добавления продукта в корзину
+	// Метод для добавления товара в корзину 
 	addToBasket(product: IProduct) {
-		if(!this._basket.includes(product)) {
-			this._basket.push(product)
-		}
-	}
+    this._basket.push(product);
+}
 
-  // Метод для удаления продукта из корзины
+	// Метод для удаления товара из корзины
 	deleteFromBasket(product: IProduct) {
-		let result = this.basket.filter(item => item.id !== product.id)
-		this._basket = result
-	}
+		const index = this._basket.findIndex(item => item.id === product.id);
+		if (index !== -1) {
+				this._basket.splice(index, 1); 
+		}
+	}	
 
   // Метод для установки общей стоимости товаров в корзине
 	setTotal(): number {
@@ -126,4 +126,19 @@ export class AppState extends Model<IAppState> {
 		this._order[field] = value;
 		this.validateOrderForm() && this.validateContactsForm()
 	}
+
+	// Метод очистки заказа
+	clearOrder() {
+		this._order = {
+			payment: '',
+			address: '',
+			email: '',
+			phone: '',
+			items: [],
+			total: this._order.total,
+		};
+	}
 }
+
+
+
